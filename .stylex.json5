@@ -1,17 +1,28 @@
 {
-  input: ['./source'],
-  output: ['./src'],
-  cssBundleName: 'stylex_bundle.css',
+  input: ["./source"],
+  output: ["./src"],
+  cssBundleName: "stylex_bundle.css",
   babelPresets: [
-    ['@babel/preset-typescript', { allExtensions: true, isTSX: true }],
+    ["@babel/preset-typescript", { allExtensions: true, isTSX: true }],
     // '@babel/preset-react',
   ],
+  babelPluginsPost: [
+    [
+      "module-resolver",
+      {
+        root: ["./"],
+        alias: {
+          "@": "./src",
+        },
+      },
+    ],
+  ],
   modules_EXPERIMENTAL: [
-    ['@stylexjs/open-props', { ignore: ['src', '__tests__'] }],
+    ["@stylexjs/open-props", { ignore: ["src", "__tests__"] }],
   ],
   styleXConfig: {
     aliases: {
-      '@/*': ['./source/*'],
+      "@/*": ["./source/*"],
     },
   },
   // watch: true,
